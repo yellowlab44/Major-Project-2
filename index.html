@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stock Lookup App — Vanilla JS</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Link the style.css file to this HTML file -->
+</head>
+
+<body>
+  <header class="container"> <!-- Added a header section with class label -->
+    <h1>📈 Stock Lookup</h1>
+    <form id="searchForm" class="search"> 
+        <!-- Added a form with id and class label -->
+      <input id="query" name="q" type="search" placeholder="Search by symbol or company (e.g., AAPL, Tesla)" autocomplete="off" required /> 
+        <!-- Added an input field with id, name, type, placeholder, and required attributes -->
+      <button type="submit">Search</button> 
+        <!-- Added a submit button -->
+    </form>
+    <div id="searchHelp" class="hint">Type 2+ characters to search. Select a match to view live quote.</div>
+        <!-- Added a div for search help with id and class label -->
+  </header>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>Matches</h2>
+      <ul id="matches" class="list"></ul> 
+        <!-- Added an unordered list with id and class label -->
+    </section>
+
+    <section class="card">
+        <!-- Added a section for the stock quote with class label -->
+      <h2>Quote</h2>
+      <div id="quote" class="quote">
+        <div class="row">
+            <!-- Added a div for the stock symbol and name with class label -->
+          <div>
+            <div class="symbol" id="qSymbol">—</div> 
+                <!-- Added a div for the stock symbol with id and class label -->
+            <div class="name" id="qName">Select a stock</div>
+                <!-- Added a div for the stock name with id and class label -->
+          </div>
+          <div class="price">
+            <div id="qPrice">—</div>
+                <!-- Added a div for the stock price with id and class label -->
+            <div id="qChange" class="chip">—</div>
+                <!-- Added a div for the stock change with id and class label -->
+          </div>
+        </div>
+
+        <div class="meta" id="qMeta">Open — • High — • Low — • Volume —</div>
+            <!-- Added a div for stock data with id and class label with - as placeholder -->
+        <div id="sparkWrap" class="spark"></div>
+            <!-- Added a div for the sparkline chart with id and class label -->
+        <div class="portfolio">
+            <!-- Added a div for portfolio management with class label -->
+          <label>
+            Shares owned:
+            <input id="sharesInput" type="number" min="0" step="0.0001" placeholder="0" />
+          </label>
+          <button id="saveShares" type="button">Save</button>
+          <button id="watchBtn" type="button">Watch</button>
+          <div id="ownedValue" class="hint">Total Value: —</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Watchlist</h2>
+      <ul id="watchlist" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>Data via Twelve Data (server-side proxied). Optional logos via Clearbit.</small>
+  </footer>
+
+  <!-- Templates for list items? What are these for? -->
+  <template id="matchItemTpl">
+    <!-- Create a list with the class item? -->
+    <li class="item">
+      <button class="item-btn" type="button">
+        <span class="primary"></span>
+        <span class="secondary"></span>
+      </button>
+    </li>
+  </template>
+
+  <template id="watchItemTpl"> 
+    <!-- Create a list with the class item? -->
+    <li class="item">
+      <button class="item-btn go" type="button"><span class="primary"></span><span class="secondary"></span></button>
+      <button class="item-btn remove" type="button">Remove</button>
+    </li>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
